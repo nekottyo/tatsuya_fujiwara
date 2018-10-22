@@ -2,15 +2,18 @@ function getFuziwara(message) {
   console.log(message);
   console.log(typeof message);
   var kp = /^[kp]+$/;
+  var tatsuya = /^達也/;
   if (message === 'session') {
     return session()
   } else if (message === '怒った?') {
     return addSonantMark('怒ってないよ')
   } else if (message == '昼飯') {
     return getHirumeshi()
+  } else if (message == '昼飯') {
   } else if (kp.test(message)) {
     return kpp(message)
-  } else if {}
+  } else if (tatsuya.test(message)) {
+    return addSonantMark('メンバーじゃない')
   } else {
     return addSonantMark(message)
   }
