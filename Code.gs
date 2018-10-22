@@ -68,7 +68,7 @@ function doPost(e) {
   responseText = ""
 
   var fuziwara = /^竜也\s+(.*)$/
-  var member = /^達也\s+(.*)$/
+  var member = /達也/
 
   if (fuziwara.test(rowMessage)) {
     responseText = getFuziwara(rowMessage.match(fuziwara)[1].toString())
