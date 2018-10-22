@@ -8,7 +8,6 @@ function getFuziwara(message) {
     return addSonantMark('怒ってないよ')
   } else if (message == '昼飯') {
     return getHirumeshi()
-  } else if (message == '昼飯') {
   } else if (kp.test(message)) {
     return kpp(message)
   } else {
@@ -69,7 +68,8 @@ function doPost(e) {
   responseText = ""
 
   var fuziwara = /^竜也\s+(.*)$/
-  var member = /^達也\s(.*)$/
+  var member = /^達也\s+(.*)$/
+
   if (fuziwara.test(rowMessage)) {
     responseText = getFuziwara(rowMessage.match(fuziwara)[1].toString())
   } else if (member.test(rowMessage)) {
