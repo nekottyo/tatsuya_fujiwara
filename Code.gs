@@ -2,7 +2,6 @@ function getFuziwara(message) {
   console.log(message);
   console.log(typeof message);
   var kp = /^[kp]+$/;
-  var tatsuya = /^達也/;
   if (message === 'session') {
     return session()
   } else if (message === '怒った?') {
@@ -12,8 +11,6 @@ function getFuziwara(message) {
   } else if (message == '昼飯') {
   } else if (kp.test(message)) {
     return kpp(message)
-  } else if (tatsuya.test(message)) {
-    return addSonantMark('メンバーじゃない')
   } else {
     return addSonantMark(message)
   }
@@ -67,9 +64,21 @@ function kpp(message) {
 
 function doPost(e) {
   var url = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1').getRange('A1').getValue();
-  var message = e.parameter.text.match(/竜也\s+(.*)/)[1].toString()
+  var rowMessage = e.parameter.text
+
+  responseText = ""
+
+  var fuziwara = /^竜也\s+(.*)$/
+  var member = /^達也\s(.*)$/
+  if (fuziwara.test(rowMessage)) {
+    responseText = getFuziwara(rowMessage.match(fuziwara)[1].toString())
+  } else if (member.test(rowMessage)) {
+    responseText = addSonantMark('メンバーじゃない')
+  }
+
+  var text = getFuziwara(message)
   var payload  = {
-    'text'      : getFuziwara(message),
+    'text'      : responseText ,
   };
   var options = {
     'method'      : 'post'                 ,
