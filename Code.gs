@@ -76,7 +76,6 @@ function doPost(e) {
     responseText = addSonantMark('メンバーじゃない')
   }
 
-  var text = getFuziwara(message)
   var payload  = {
     'text'      : responseText ,
   };
