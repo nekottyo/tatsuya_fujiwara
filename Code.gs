@@ -1,8 +1,22 @@
 function getFuziwara(message) {
   console.log(message);
   console.log(typeof message);
-  var re = /^[kp]+$/;
+  var kp = /^[kp]+$/;
   if (message === 'session') {
+    return session()
+  } else if (message === '怒った?') {
+    return addSonantMark('怒ってないよ')
+  } else if (message == '昼飯') {
+    return getHirumeshi()
+  } else if (kp.test(message)) {
+    return kpp(message)
+  } else if {}
+  } else {
+    return addSonantMark(message)
+  }
+}
+
+function session() {
     const term = [':session-se:', ':session-tu:',':session-si:',':session-yo:', ':session-n:']
     var text = ""
     var index = 0
@@ -16,15 +30,6 @@ function getFuziwara(message) {
       }
     }
     return text
-  } else if (message === '怒った?') {
-    return addSonantMark('怒ってないよ')
-  } else if (message == '昼飯') {
-    return getHirumeshi()
-  } else if (re.test(message)) {
-    return kpp(message)
-  } else {
-    return addSonantMark(message)
-  }
 }
 
 function getHirumeshi() {
