@@ -76,6 +76,9 @@ function doPost(e) {
     responseText = addSonantMark('メンバーじゃない')
   }
 
+  if (responseText.length == 0) {
+    return
+  }
   var payload  = {
     'text'      : responseText ,
   };
