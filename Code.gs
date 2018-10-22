@@ -65,7 +65,7 @@ function doPost(e) {
   var url = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1').getRange('A1').getValue();
   var rowMessage = e.parameter.text
 
-  responseText = ""
+  var responseText = ""
 
   var fuziwara = /^竜也\s+(.*)$/
   var member = /達也/
