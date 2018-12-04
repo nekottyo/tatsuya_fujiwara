@@ -120,7 +120,7 @@ function doPost(e) {
   } else if (member.test(rowMessage)) {
     responseText = addSonantMark("メンバーじゃない");
   } else {
-    responseText = tatsuyaForAll(rowMessage)
+    responseText = tatsuyaForAll(rowMessage.toString())
   }
 
   if (responseText.length == 0) {
