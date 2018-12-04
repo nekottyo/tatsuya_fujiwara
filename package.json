@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@google/clasp": "^1.6.3",
+    "@types/google-apps-script": "^0.0.32",
+    "global": "^4.3.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.15.3",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  },
+  "scripts": {
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+  }
+}
