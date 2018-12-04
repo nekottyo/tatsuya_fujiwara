@@ -1,8 +1,8 @@
 function getFuziwara(message) {
   console.log(message);
   console.log(typeof message);
-  let kp = /^[kp]+$/;
-  let x = /^.*(紅|くれない).*$/;
+  var kp = /^[kp]+$/;
+  var x = /^.*(紅|くれない).*$/;
   if (message === "session") {
     return session();
   } else if (message === "怒った?") {
@@ -43,7 +43,7 @@ function session() {
 }
 
 function xJapan() {
-  let yoshiki = "紅だ";
+  var yoshiki = "紅だ";
   const iter = [
     { count: getRandomInt(3, 20), shout: "ー" },
     { count: getRandomInt(3, 20), shout: "！" }
@@ -64,7 +64,7 @@ function getHirumeshi() {
 }
 
 function appendEach(count, string) {
-  let text = "";
+  var text = "";
   for (var i = 0; i < count; i++) {
     text += string;
   }
