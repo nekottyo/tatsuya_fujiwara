@@ -1,4 +1,4 @@
-function getFuziwara(message) {
+function askTatsuya(message) {
   console.log(message);
   console.log(typeof message);
   var kp = /^[kp]+$/;
@@ -15,6 +15,13 @@ function getFuziwara(message) {
     return xJapan();
   } else {
     return addSonantMark(message);
+  }
+}
+
+function tatsuyaForAll(message) {
+  var x = /^.*(紅|くれない).*$/;
+  if (x.test(message)) {
+    return xJapan();
   }
 }
 
@@ -46,12 +53,12 @@ function xJapan() {
   var yoshiki = "紅だ";
   const iter = [
     { count: getRandomInt(3, 20), shout: "ー" },
-    { count: getRandomInt(3, 20), shout: "！" }
+    { count: getRandomInt(3, 100), shout: "！" }
   ];
 
-  for (const value of iter) {
+  iter.forEach(function (value) {
     yoshiki += appendEach(value.count, value.shout);
-  }
+  });
 
   return yoshiki;
 }
@@ -109,9 +116,11 @@ function doPost(e) {
   var member = /達也/;
 
   if (fuziwara.test(rowMessage)) {
-    responseText = getFuziwara(rowMessage.match(fuziwara)[1].toString());
+    responseText = askTatsuya(rowMessage.match(fuziwara)[1].toString());
   } else if (member.test(rowMessage)) {
     responseText = addSonantMark("メンバーじゃない");
+  } else {
+    responseText = tatsuyaForAll(rowMessage)
   }
 
   if (responseText.length == 0) {
