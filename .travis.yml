@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - stable
 - '6'
-- '4'
 before_install:
 - openssl aes-256-cbc -K $encrypted_179aaee53884_key -iv $encrypted_179aaee53884_iv
   -in ./tests/.clasprc.json.enc -out .clasprc.json -d || true
