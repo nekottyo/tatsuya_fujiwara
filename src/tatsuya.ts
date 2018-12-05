@@ -8,6 +8,7 @@ export class Tatsuya {
     let fuziwara = /^竜也\s+(.*)$/;
     let member = /達也/;
 
+    console.log(message);
     if (fuziwara.test(message)) {
       return this.askTatsuya(message.match(fuziwara)[1].toString());
     } else if (member.test(message)) {
@@ -17,7 +18,7 @@ export class Tatsuya {
     }
   }
 
-  public askTatsuya(message): string {
+  public askTatsuya(message: string): string {
     if (message === "session") {
       return this.session();
     } else if (message === "怒った?") {
@@ -64,8 +65,8 @@ export class Tatsuya {
     }
   }
 
-  private addSonantMark(message): string {
-    let response: string;
+  private addSonantMark(message: string): string {
+    let response: string = "";
     Array.prototype.forEach.call(message, function(s) {
       response += s + "゛";
     });
@@ -96,7 +97,7 @@ export class Tatsuya {
   }
 
   private kpp(message): string {
-    let response: string;
+    let response: string = "";
 
     Array.prototype.forEach.call(message, function(s) {
       if (s === "k") {
