@@ -1,24 +1,30 @@
 import { Tatsuya } from "./tatsuya";
+import { Slack } from "./slack";
 
 function doPost(e) {
-  const tatsuya = new Tatsuya();
-
-  let url = SpreadsheetApp.getActiveSpreadsheet()
+  let postUrl: object = SpreadsheetApp.getActiveSpreadsheet()
     .getSheetByName("Sheet1")
     .getRange("A1")
     .getValue();
-  let rowMessage: string = e.parameter.text;
 
-  let responseText: string = tatsuya.call(rowMessage);
+  let oAuthToken: object = SpreadsheetApp.getActiveSpreadsheet()
+    .getSheetByName("Sheet1")
+    .getRange("A2")
+    .getValue();
 
-  let payload: { [key: string]: string } = {
-    text: responseText
-  };
-  let options: { [key: string]: string } = {
-    method: "post",
-    contentType: "application/json",
-    payload: JSON.stringify(payload)
-  };
+  console.log(e.postData.getDataAsString());
+  let jsonData: { [key: string]: { [key: string]: string } } = JSON.parse(
+    e.postData.getDataAsString()
+  );
+  console.log(jsonData);
 
-  UrlFetchApp.fetch(String(url), options);
+  let message: string = jsonData.event.text;
+  console.log(message);
+
+  const tatsuya = new Tatsuya();
+  const slack = new Slack(String(postUrl), String(oAuthToken), jsonData.event);
+
+  if (tatsuya.call(message)) {
+    return slack.call(tatsuya.call(message));
+  }
 }
