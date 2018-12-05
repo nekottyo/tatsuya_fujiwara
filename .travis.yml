@@ -11,7 +11,7 @@ chache:
   cache: yarn
   directories: node_modules
 before_script:
-- yarn run clasp login --cred .clasprc.json
+- yarn run clasp login --creds .clasprc.json
 script:
 - yarn run clasp push
 - version=$(yarn run clasp deploy | grep -Po '(?<=Created version )\d+')
