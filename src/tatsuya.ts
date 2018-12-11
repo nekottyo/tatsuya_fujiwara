@@ -1,6 +1,7 @@
 export class Tatsuya {
   static kp: RegExp = /^[kp]+$/;
-  static x: RegExp = /^.*(紅|くれない|く.*れ.*な.*い).*$/;
+  static x: RegExp = /^.*(紅|く.*れ.*な.*い|kurenai).*$/;
+  static police: RegExp = /^.*(逮捕|た.*い.*ほ|タ.*イ.*ホ|taiho).*$/;
 
   constructor() {}
 
@@ -59,9 +60,10 @@ export class Tatsuya {
   }
 
   private tatsuyaForAll(message): string {
-    let x: RegExp = /^.*(紅|くれない).*$/;
-    if (x.test(message)) {
+    if (Tatsuya.x.test(message)) {
       return this.xJapan();
+    } else if (Tatsuya.police.test(message)) {
+      return this.police();
     }
   }
 
@@ -73,19 +75,28 @@ export class Tatsuya {
     return response;
   }
 
-  private xJapan(): string {
-    let yoshiki: string = "紅だ";
-
+  private shout(baseString): string {
+    let text: string = baseString;
     const iter = [
       { count: this.getRandomInt(3, 20), shout: "ー" },
       { count: this.getRandomInt(3, 100), shout: "！" }
     ];
 
     for (let value of iter) {
-      yoshiki += this.appendEach(value.count, value.shout);
+      text += this.appendEach(value.count, value.shout);
     }
 
-    return yoshiki;
+    return text;
+  }
+
+  private xJapan(): string {
+    let yoshiki: string = "紅だ";
+    return this.shout(yoshiki);
+  }
+
+  private police(): string {
+    let omawari: string = "逮捕だ";
+    return this.shout(omawari);
   }
 
   private appendEach(count, text): string {
