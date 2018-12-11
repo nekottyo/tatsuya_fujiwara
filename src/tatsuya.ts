@@ -1,6 +1,6 @@
 export class Tatsuya {
   static kp: RegExp = /^[kp]+$/;
-  static x: RegExp = /^.*(紅|くれない).*$/;
+  static x: RegExp = /^.*(紅|くれない|く.*れ.*な.*い).*$/;
 
   constructor() {}
 
