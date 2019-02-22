@@ -26,6 +26,8 @@ export class Tatsuya {
       return this.addSonantMark("怒ってないよ");
     } else if (message == "昼飯") {
       return this.getHirumeshi();
+    } else if (message == "カレー") {
+      return this.getCurry();
     } else if (Tatsuya.kp.test(message)) {
       return this.kpp(message);
     } else if (Tatsuya.x.test(message)) {
@@ -125,6 +127,13 @@ export class Tatsuya {
       " "
     );
     return meshi_list[this.getRandomInt(0, meshi_list.length)];
+  }
+
+  private getCurry(): string {
+    let currys = "エビカレー エビココナッツカレー エビとバターカレー エビと玉子のカレー エビと茄子カレー クミンとじゃがいものカレー シーフードカレー シーフードとなすのカレー チキンカレー チキンココナッツカレー チキンコルマカレー チキン・ド・ピアザカレー チキンと玉子カレー チキンと豆カレー チキンバルタカレー チキンポテトカレー チキンラジュワブカレー チキン茄子カレー とり皮カレー なすとじゃがいものカレー なすとトマトのカレー バターチキンカレー バターチキンカレー・ほうれん草とひき肉のカレー ひき肉とエビのカレー ひき肉となすのカレー ひき肉とほうれん草のカレー ひき肉と玉子のカレー ひき肉のカレー ひよこ豆のカレー フィッシュマサラカレー ブラックカレー ベジタブルカレー ポークカレー ポークとじゃがいものカレー ポークとほうれん草のカレー ポークと玉子のカレー ポークマサラカレー ほうれん草とエビのカレー ほうれん草とじゃがいものカレー ほうれ ん草とチキンカレー ほうれん草と野菜のカレー ほうれん草マトンカレー マトンカレー マトンマサラカレー 本日のカレー 本日のカレー＆チキンバルタカレー 豆とほうれん草のカレー 豆のカレー 魚ココナッツカレー 魚とマッシュルームのカレー".split(
+      " "
+    );
+    return currys[this.getRandomInt(0, currys.length)];
   }
 
   private getRandomInt(min: number, max: number): number {
