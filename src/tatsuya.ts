@@ -11,7 +11,7 @@ export class Tatsuya {
 
     let message: string = data.event.text;
 
-    if (data.event.user === this.getSeiyaID()) {
+    if (data.event.user === this.getSeiyaID() && this.isSeiyaActive()) {
       return this.addSonantMark("せいや!?");
     }
 
@@ -38,6 +38,9 @@ export class Tatsuya {
       return this.kpp(message);
     } else if (Tatsuya.x.test(message)) {
       return this.xJapan();
+    } else if (message == "toggleseiya") {
+      this.toggleSeiyaMode();
+      return "ok";
     } else {
       return this.addSonantMark(message);
     }
@@ -155,11 +158,23 @@ export class Tatsuya {
     );
   }
 
-  private invertSeiyaMode() {
+  private toggleSeiyaMode() {
     let status: GoogleAppsScript.Spreadsheet.Range = SpreadsheetApp.getActiveSpreadsheet()
       .getSheetByName("Sheet1")
       .getRange("B8");
 
     status.setValue((Number(status.getValue()) + 1) % 2);
+  }
+
+  private isSeiyaActive(): boolean {
+    let status: object = SpreadsheetApp.getActiveSpreadsheet()
+      .getSheetByName("Sheet1")
+      .getRange("B8")
+      .getValue();
+
+    if (Number(status) == 1) {
+      return true;
+    }
+    return false;
   }
 }
