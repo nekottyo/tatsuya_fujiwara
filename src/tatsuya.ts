@@ -11,6 +11,10 @@ export class Tatsuya {
 
     let message: string = data.event.text;
 
+    if (message == "toggleseiya") {
+      this.toggleSeiyaMode();
+      return "ok";
+    }
     if (data.event.user === this.getSeiyaID() && this.isSeiyaActive()) {
       return this.addSonantMark("せいや!?");
     }
@@ -38,9 +42,6 @@ export class Tatsuya {
       return this.kpp(message);
     } else if (Tatsuya.x.test(message)) {
       return this.xJapan();
-    } else if (message == "toggleseiya") {
-      this.toggleSeiyaMode();
-      return "ok";
     } else {
       return this.addSonantMark(message);
     }
