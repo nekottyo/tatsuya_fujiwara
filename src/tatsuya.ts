@@ -5,9 +5,15 @@ export class Tatsuya {
 
   constructor() {}
 
-  public call(message: string): string {
+  public call(data: { [key: string]: { [key: string]: string } }): string {
     let fuziwara = /^竜也\s+(.*)$/;
     let member = /達也/;
+
+    let message: string = data.event.text;
+
+    if (data.event.user === this.getSeiyaID()) {
+      return this.addSonantMark("せいや!?");
+    }
 
     console.log(message);
     if (fuziwara.test(message)) {
@@ -138,5 +144,22 @@ export class Tatsuya {
 
   private getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  private getSeiyaID(): string {
+    return String(
+      SpreadsheetApp.getActiveSpreadsheet()
+        .getSheetByName("Sheet1")
+        .getRange("B9")
+        .getValue()
+    );
+  }
+
+  private invertSeiyaMode() {
+    let status: GoogleAppsScript.Spreadsheet.Range = SpreadsheetApp.getActiveSpreadsheet()
+      .getSheetByName("Sheet1")
+      .getRange("B8");
+
+    status.setValue((Number(status.getValue()) + 1) % 2);
   }
 }
