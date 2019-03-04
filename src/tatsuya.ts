@@ -2,6 +2,7 @@ export class Tatsuya {
   static kp: RegExp = /^[kp]+$/;
   static x: RegExp = /^.*(紅|く.*れ.*な.*い|kurenai).*$/;
   static police: RegExp = /^.*(逮捕|た.*い.*ほ|タ.*イ.*ホ|taiho).*$/;
+  static yudetaro: RegExp = /^.*ゆ.*で.*太.*郎.*$/;
 
   constructor() {}
 
@@ -66,6 +67,8 @@ export class Tatsuya {
       return this.xJapan();
     } else if (Tatsuya.police.test(message)) {
       return this.police();
+    } else if (Tatsuya.yudetaro.test(message)) {
+      return "せいや!?";
     }
   }
 
@@ -123,7 +126,7 @@ export class Tatsuya {
   }
 
   private getHirumeshi(): string {
-    let meshi_list = "ラーメン カフェ カレー 寿司 スイーツ 焼き鳥 タイ料理 しゃぶしゃぶ つけ麺 ファミレス パスタ もつ鍋 ピザ 韓国料理 ホルモン ハンバーグ うどん 餃子 天ぷら 喫茶店 沖縄料理 うなぎ そば（蕎麦） ハンバーガー 居酒屋 焼肉 バー お好み焼き ステーキ バイキング オイスターバー 鉄板焼き ケーキ屋 オムライス おでん とんかつ パン屋 ワインバー 火鍋 ダイニングバー 定食 立ち飲み 水炊き ビストロ 洋食 牛タン スポーツバー サムギョプサル クレープ 肉バル 海鮮丼 たこ焼き 串カツ お土産 親子丼 カツ丼 天丼 ビアバー アイスクリーム 懐石料理 ちゃんこ鍋 四川料理 炉端焼き 甘味処 冷麺 京料理 料亭 牛丼".split(
+    let meshi_list = "ラーメン カフェ カレー 寿司 スイーツ 焼き鳥 タイ料理 しゃぶしゃぶ つけ麺 ファミレス パスタ もつ鍋 ピザ 韓国料理 ホルモン ハンバーグ うどん 餃子 天ぷら 喫茶店 沖縄料理 うなぎ そば（蕎麦） ハンバーガー 居酒屋 焼肉 バー お好み焼き ステーキ バイキング オイスターバー 鉄板焼き ケーキ屋 オムライス おでん とんかつ パン屋 ワインバー 火鍋 ダイニングバー 定食 立ち飲み 水炊き ビストロ 洋食 牛タン スポーツバー サムギョプサル クレープ 肉バル 海鮮丼 たこ焼き 串カツ お土産 親子丼 カツ丼 天丼 ビアバー アイスクリーム 懐石料理 ちゃんこ鍋 四川料理 炉端焼き 甘味処 冷麺 京料理 料亭 牛丼 ゆで太郎".split(
       " "
     );
     return meshi_list[this.getRandomInt(0, meshi_list.length)];
