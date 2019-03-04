@@ -2,6 +2,7 @@ export class Tatsuya {
   static kp: RegExp = /^[kp]+$/;
   static x: RegExp = /^.*(紅|く.*れ.*な.*い|kurenai).*$/;
   static police: RegExp = /^.*(逮捕|た.*い.*ほ|タ.*イ.*ホ|taiho).*$/;
+  static yudetaro: RegExp = /^.*ゆ.*で.*太.*郎.*$/;
 
   constructor() {}
 
@@ -66,6 +67,8 @@ export class Tatsuya {
       return this.xJapan();
     } else if (Tatsuya.police.test(message)) {
       return this.police();
+    } else if (Tatsuya.yudetaro.test(message)) {
+      return "せいや!?";
     }
   }
 
