@@ -18,13 +18,11 @@ function doPost(e) {
   );
   console.log(jsonData);
 
-  let message: string = jsonData.event.text;
-  console.log(message);
 
   const tatsuya = new Tatsuya();
   const slack = new Slack(String(postUrl), String(oAuthToken), jsonData.event);
 
-  if (tatsuya.call(message)) {
-    return slack.call(tatsuya.call(message));
+  if (tatsuya.call(jsonData)) {
+    return slack.call(tatsuya.call(jsonData));
   }
 }
