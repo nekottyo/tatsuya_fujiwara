@@ -1,22 +1,28 @@
 language: node_js
 node_js:
 - stable
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_179aaee53884_key -iv $encrypted_179aaee53884_iv
-  -in ./tests/.clasprc.json.enc -out .clasprc.json -d || true
+  - openssl aes-256-cbc -K $encrypted_179aaee53884_key -iv $encrypted_179aaee53884_iv
+    -in ./tests/.clasprc.json.enc -out .clasprc.json -d || true
+
 install: yarn
 chache:
   cache: yarn
   directories: node_modules
+
 before_script:
-- yarn run clasp login --creds .clasprc.json || true
+  - yarn run clasp login --creds .clasprc.json || true
+
 script:
-- yarn run clasp push
-- version=$(yarn run clasp deploy | grep -Po '(?<=Created version )\d+')
-- yarn run clasp redeploy $DEPLOYMENT_ID $version 'Deployed by Travis'
+  - yarn run clasp push
+  - version=$(yarn run clasp deploy | grep -Po '(?<=Created version )\d+')
+  - yarn run clasp redeploy $DEPLOYMENT_ID $version 'Deployed by Travis'
+
 branches:
   only:
-  - master
+    - master
+
 env:
   global:
     secure: im5/W6toyGTY+RvKw1cXkJ57h9FalTKJM8uZd5+Fhpr43U0cO3wLQCUlXAhS1cxrgA25F41pBw0xxRdiMu3OG7K1kFZvsequKzDzs9YGqjh6pNCStqQeBstlC/5x5Nl+CGSiZKjexcvZzrA/Rf/AOjpKPrMgEWqVRj5ma9d/e8QbaMxlPvPuZz0GgfGlXyM2liyDSnzFVOXFBby5AjfxZZJw0/eiT6sQuIXq4CyktAYE0tdomFt/mjMEjsvSkrH+GSTWGMNL3tlkQCnxN6Rb52ICunAITMS+l3Mw7WppJt+HH89MwbXb8H15a1V5AepzHa+eOca8nQowbGPl8vzgcBtkuPAvSqjXcqqlTRjIfI5N2ubOClc8xQb/PVLKoHE6x6sNvUavbMrpfpJnb3KmRbCy8m2J7PKEVs5aXrcAUE18COCbncw7jaFlhZ9wqe6oKWv73/QbREXRBPtD16dJ8G8KxFn8H8DUlj1sDg608aY6B8+VpZWiElGDj0ZiT/hADFtwQasHJfhW9KoobkFbgCGcpcWsmLP0Qju0uqcPzhxWSL5vl4M5UOXbgFirM+1L15ID6ZV1sbMxhKxPr25VN+n+4NptkPxoJxcXE3w+0mTJw2CGQv/lrT9LZ1+9G1IsV6e1jpFq0jQ2b0hMDKsI7eqUOUDeS5iPs8ECnpWPkSw=
