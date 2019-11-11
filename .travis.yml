@@ -16,7 +16,7 @@ before_script:
 
 script:
   - yarn run clasp push
-  - version=$(yarn run clasp deploy | grep -Po '(?<=Created version )\d+')
+  - version=$(yarn run clasp deploy 2>/dev/null | grep -Po '(?<=Created version )\d+')
   - yarn run clasp redeploy $DEPLOYMENT_ID $version 'Deployed by Travis'
 
 branches:
