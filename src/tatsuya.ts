@@ -16,9 +16,9 @@ export class Tatsuya {
       this.toggleSeiyaMode();
       return "ok";
     }
-    if (data.event.user === this.getSeiyaID() && this.isSeiyaActive()) {
-      return this.addSonantMark("せいや!?");
-    }
+    // if (data.event.user === this.getSeiyaID() && this.isSeiyaActive()) {
+    //   return this.addSonantMark("せいや!?");
+    // }
 
     console.log(message);
     if (fuziwara.test(message)) {
