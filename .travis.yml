@@ -11,8 +11,8 @@ chache:
 before_script:
 - yarn run clasp login --creds .clasprc.json || true
 script:
-- yarn run clasp push
-- yarn run clasp deploy -i "AKfycbzkVl9xLX_BEHwuVPu7YXgs3JLHP7Xcih6bJUj3JquYVah6Yl0"
+- yarn run clasp undeploy
+- yarn run clasp deploy
 branches:
   only:
   - master
