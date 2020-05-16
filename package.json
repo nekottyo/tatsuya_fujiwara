@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "@google/clasp": "1.7.0",
-    "@types/google-apps-script": "0.0.62",
+    "@google/clasp": "2.3.0",
+    "@types/google-apps-script": "1.0.14",
     "axios": "0.19.2",
-    "braces": "2.3.1",
+    "braces": "3.0.2",
     "global": "4.4.0"
   },
   "devDependencies": {
-    "prettier": "1.19.1",
+    "prettier": "2.0.5",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0"
   },
