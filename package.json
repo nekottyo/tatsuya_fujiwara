@@ -2,7 +2,7 @@
   "dependencies": {
     "@google/clasp": "2.3.0",
     "@types/google-apps-script": "1.0.14",
-    "axios": "0.19.2",
+    "axios": "0.20.0",
     "braces": "3.0.2",
     "global": "4.4.0"
   },
