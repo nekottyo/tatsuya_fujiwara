@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@google/clasp": "2.3.0",
+    "@google/clasp": "2.3.2",
     "@types/google-apps-script": "1.0.15",
     "axios": "0.20.0",
     "braces": "3.0.2",
